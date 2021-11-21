@@ -1,4 +1,4 @@
-import type { NextPage, GetStaticPathsContext } from 'next'
+import type { NextPage, GetStaticPathsContext, GetStaticPropsContext } from 'next'
 import { Box } from "@chakra-ui/react"
 
 const Post : NextPage  = () => {
@@ -9,7 +9,7 @@ const Post : NextPage  = () => {
     )
 }
 
-export async function getStaticPaths(context:type) {
+export async function getStaticPaths() {
     
 }
 export default Post;
