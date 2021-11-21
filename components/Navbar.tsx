@@ -1,10 +1,11 @@
-import { Box, Container, HStack, Flex, Heading, Spacer, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { LinkOverlay, LinkBox, Container, Center, Flex, Heading, Text, HStack, useColorModeValue, Link } from "@chakra-ui/react";
 import React from "react";
+import NextLink from "next/link";
 import ColorModeButton from "./ColorModeButton";
 
 const Navbar = () => {
     return (
-        <Box
+        <LinkBox
             w="100%"
             h={16}
             position="fixed"
@@ -13,11 +14,20 @@ const Navbar = () => {
             >
             <Container h="100%" maxW="container.md">
                 <Flex h="100%" justify="space-between" align="center">
-                    <Heading as="h3" size="md">&gt; $  cd /home/</Heading>
-                    <ColorModeButton/>
+                        <Heading as="h3" size="md">
+                            <LinkOverlay as={NextLink}>
+                                &gt; $  cd /home/
+                            </LinkOverlay> 
+                        </Heading>
+                    <HStack spacing={8}>
+                        <LinkOverlay href="/about" as={NextLink}>
+                            About
+                        </LinkOverlay>
+                        <ColorModeButton/>
+                    </HStack>
                 </Flex>
             </Container>
-        </Box>
+        </LinkBox>
     )
 }
 
