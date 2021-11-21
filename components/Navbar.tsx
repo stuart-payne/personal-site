@@ -15,7 +15,7 @@ const Navbar = () => {
             <Container h="100%" maxW="container.md">
                 <Flex h="100%" justify="space-between" align="center">
                         <Heading as="h3" size="md">
-                            <LinkOverlay as={NextLink}>
+                            <LinkOverlay href="/" as={NextLink}>
                                 &gt; $  cd /home/
                             </LinkOverlay> 
                         </Heading>

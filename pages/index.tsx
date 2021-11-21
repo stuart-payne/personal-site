@@ -1,10 +1,15 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
 import Layout from '../components/Layout'
-import { Center, Heading, HStack, VStack, Icon } from '@chakra-ui/react'
+import { Center, Heading, HStack, VStack, Icon, Text } from '@chakra-ui/react'
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
 import { LinkIcon } from '../components/LinkIcon'
+import { getPostNames } from '../lib/helpers'
 
-const Home: NextPage = () => {
+interface IndexProps {
+    posts : string[];
+}
+
+const Home: NextPage<IndexProps>  = ({ posts }) => {
     return (
         <Center h="100%">
             <VStack spacing="18px">
@@ -15,14 +20,19 @@ const Home: NextPage = () => {
                     <LinkIcon url="https://linkedin.com/in/stuartrpayne" icon={FaLinkedin} />
                 </HStack>
                 <Heading as="h2" size="lg">DevBlog</Heading>
+                <VStack>
+                    { posts.map((post) => <Text key={post}>{post}</Text>)}
+                </VStack>
             </VStack>
         </Center>
     )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<IndexProps> = async() => {
     return {
-        props: {},
+        props: {
+            posts: await getPostNames()
+        },
     }
 }
 
