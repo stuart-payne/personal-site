@@ -1,12 +1,16 @@
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
-import Layout from '../components/Layout'
-import { Center, Heading, HStack, VStack, Icon, Text } from '@chakra-ui/react'
+import type { NextPage, GetStaticProps, } from 'next'
+import { Center, Heading, HStack, VStack, Text } from '@chakra-ui/react'
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
 import { LinkIcon } from '../components/LinkIcon'
-import { getPostNames } from '../lib/helpers'
+import { getPostNames, getFrontMatterForAllPosts } from '../lib/helpers'
 
 interface IndexProps {
-    posts : string[];
+    posts : PostMatter[]
+}
+
+interface PostMatter {
+	title: string,
+	date: string,
 }
 
 const Home: NextPage<IndexProps>  = ({ posts }) => {
@@ -21,7 +25,7 @@ const Home: NextPage<IndexProps>  = ({ posts }) => {
                 </HStack>
                 <Heading as="h2" size="lg">DevBlog</Heading>
                 <VStack>
-                    { posts.map((post) => <Text key={post}>{post}</Text>)}
+                    { posts.slice(0, 5).map((post) => <Text key={post.title}>{post.title}</Text>)}
                 </VStack>
             </VStack>
         </Center>
@@ -29,9 +33,16 @@ const Home: NextPage<IndexProps>  = ({ posts }) => {
 }
 
 export const getStaticProps: GetStaticProps<IndexProps> = async() => {
+	const frontMatterArray = await getFrontMatterForAllPosts();
+	const posts = [];
+	for(const frontMatter of frontMatterArray) {
+		const { title, date } = frontMatter.data;
+		posts.push({ title, date: date.toDateString() } as PostMatter);
+		console.log(date);
+	}
     return {
         props: {
-            posts: await getPostNames()
+            posts: posts
         },
     }
 }
