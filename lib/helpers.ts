@@ -44,5 +44,5 @@ export const getAllPostMetaData = async (): Promise<PostMetaData[]> => {
 
 export const formatDateGood = (date: Date): string => {
     const dateString = date.toDateString();
-    return dateString.split(" ").slice(1, 3).join();
+    return dateString.split(" ").slice(1, 3).join(" ");
 };
