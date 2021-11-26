@@ -39,14 +39,19 @@ const Home: NextPage<IndexProps> = ({ posts }) => {
                     DevBlog
                 </Heading>
                 <VStack>
-                    {posts.slice(0, 5).map(({ title, date, link }) => (
-                        <PostLink
-                            key={title}
-                            title={title}
-                            date={date}
-                            link={link}
-                        />
-                    ))}
+                    <Heading size="md" mt="16px" mb="8px">
+                        Recent Posts
+                    </Heading>
+                    <VStack spacing="2px">
+                        {posts.slice(0, 5).map(({ title, date, link }) => (
+                            <PostLink
+                                key={title}
+                                title={title}
+                                date={date}
+                                link={link}
+                            />
+                        ))}
+                    </VStack>
                 </VStack>
             </VStack>
         </Center>

@@ -19,21 +19,30 @@ export const getPostNamesWithoutExt = async (): Promise<string[]> => {
 export const getAllPostMetaData = async (): Promise<PostMetaData[]> => {
     const postNames = await getPostNames();
     const posts: string[] = [];
+    const postMetaData: PostMetaData[] = [];
+    const frontMatterArray: GrayMatterFile<string>[] = [];
+
     for (const postName of postNames) {
         posts.push(await readFile(join(POSTS_PATH, postName), "utf8"));
     }
-    const frontMatterArray: GrayMatterFile<string>[] = [];
+
     for (const post of posts) {
         frontMatterArray.push(matter(post));
     }
-    const postMetaData: PostMetaData[] = [];
+
     for (let i = 0; i < frontMatterArray.length; i++) {
         const { title, date } = frontMatterArray[i].data;
         postMetaData.push({
             title,
-            date: date.toDateString(),
+            date: formatDateGood(date),
             link: `/posts/${postNames[i].replace(mdExtRemover, "")}`,
         });
     }
+
     return postMetaData;
+};
+
+export const formatDateGood = (date: Date): string => {
+    const dateString = date.toDateString();
+    return dateString.split(" ").slice(1, 3).join();
 };
