@@ -154,6 +154,6 @@ Now, if the user wants the slowing tower to prioritise only targets that aren't 
 
 That is pretty much it for our target selection. The three problems we wanted to solve are ticked in this solution. If you are interested in seeing the full code, the classes can be found in the following links:
 
-- [BaseTower](https://github.com/stuart-payne/ProtoTD/blob/master/Assets/Scripts/BaseTower.cs)
-- [Enemy](https://github.com/stuart-payne/ProtoTD/blob/master/Assets/Scripts/Enemy.cs)
-- [TargetSelector](https://github.com/stuart-payne/ProtoTD/blob/master/Assets/Scripts/TargetSelector.cs)
+-   [BaseTower](https://github.com/stuart-payne/ProtoTD/blob/master/Assets/Scripts/BaseTower.cs)
+-   [Enemy](https://github.com/stuart-payne/ProtoTD/blob/master/Assets/Scripts/Enemy.cs)
+-   [TargetSelector](https://github.com/stuart-payne/ProtoTD/blob/master/Assets/Scripts/TargetSelector.cs)

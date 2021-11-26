@@ -4,39 +4,39 @@ import { getPostNames, getPostNamesWithoutExt } from "../../lib/helpers";
 import { ParsedUrlQuery } from "querystring";
 
 interface PostsParams extends ParsedUrlQuery {
-  slug: string;
+    slug: string;
 }
 
 interface PostProps {
-  name: string;
+    name: string;
 }
 
 const Post: NextPage<PostProps> = ({ name }) => {
-  return (
-    <Box>
-      <Text>{name}</Text>
-    </Box>
-  );
+    return (
+        <Box>
+            <Text>{name}</Text>
+        </Box>
+    );
 };
 
 export const getStaticProps: GetStaticProps<PostProps, PostsParams> = async (
-  context
+    context
 ) => {
-  const params = context?.params as PostsParams;
-  return {
-    props: {
-      name: params.slug,
-    },
-  };
+    const params = context?.params as PostsParams;
+    return {
+        props: {
+            name: params.slug,
+        },
+    };
 };
 
 export const getStaticPaths: GetStaticPaths<PostsParams> = async () => {
-  const postNames = await getPostNamesWithoutExt();
-  return {
-    paths: postNames.map((postName) => {
-      return { params: { slug: postName } };
-    }),
-    fallback: false,
-  };
+    const postNames = await getPostNamesWithoutExt();
+    return {
+        paths: postNames.map((postName) => {
+            return { params: { slug: postName } };
+        }),
+        fallback: false,
+    };
 };
 export default Post;

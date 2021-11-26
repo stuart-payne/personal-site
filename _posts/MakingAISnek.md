@@ -34,5 +34,5 @@ Regardless of the imperfections, I'm happy with the results and honestly, it's a
 
 Full code of both projects are here:
 
-- [Snek](https://github.com/stuart-payne/Snek)
-- [Pathfinding](https://github.com/stuart-payne/Pathfinding)
+-   [Snek](https://github.com/stuart-payne/Snek)
+-   [Pathfinding](https://github.com/stuart-payne/Pathfinding)

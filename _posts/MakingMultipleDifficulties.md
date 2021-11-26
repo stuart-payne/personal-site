@@ -11,10 +11,10 @@ One of my goals when making this game was to support multiple difficulties. This
 
 The approach I chose was a data driven one. Most of the components of the game have parameters that change some behaviour:
 
-- The board that the snake moves on is generated at runtime with the height and width of the grid being parameters to it's Generate method.
-- The Ticker that controls the flow of the game has a tickRate field which the coroutine uses for the `WaitForSeconds` call.
-- The RockSpawner is called by the GameManager to spawn rocks which makes the call to spawn a rock at a rate that can be changed or switched off.
-- On game start, a UI is presented to the player which generates buttons for the player to chose which difficulty they want to play.
+-   The board that the snake moves on is generated at runtime with the height and width of the grid being parameters to it's Generate method.
+-   The Ticker that controls the flow of the game has a tickRate field which the coroutine uses for the `WaitForSeconds` call.
+-   The RockSpawner is called by the GameManager to spawn rocks which makes the call to spawn a rock at a rate that can be changed or switched off.
+-   On game start, a UI is presented to the player which generates buttons for the player to chose which difficulty they want to play.
 
 With this dynamisn and runtime generation I then needed to define this in some form of object, a way of getting this data from a source like a file and a mechanism to feed the data to the components that need it.
 
@@ -44,29 +44,29 @@ Then we can look at the JSON file that we load in at runtime:
 
 ```json
 {
-  "Difficulties": [
-    {
-      "Name": "Easy",
-      "SecondsPerTick": "0.6",
-      "TicksPerStoneSpawn": "0",
-      "GridXSize": "10",
-      "GridYSize": "10"
-    },
-    {
-      "Name": "Normal",
-      "SecondsPerTick": "0.3",
-      "TicksPerStoneSpawn": "30",
-      "GridXSize": "12",
-      "GridYSize": "12"
-    },
-    {
-      "Name": "Stupid",
-      "SecondsPerTick": "0.15",
-      "TicksPerStoneSpawn": "15",
-      "GridXSize": "16",
-      "GridYSize": "16"
-    }
-  ]
+    "Difficulties": [
+        {
+            "Name": "Easy",
+            "SecondsPerTick": "0.6",
+            "TicksPerStoneSpawn": "0",
+            "GridXSize": "10",
+            "GridYSize": "10"
+        },
+        {
+            "Name": "Normal",
+            "SecondsPerTick": "0.3",
+            "TicksPerStoneSpawn": "30",
+            "GridXSize": "12",
+            "GridYSize": "12"
+        },
+        {
+            "Name": "Stupid",
+            "SecondsPerTick": "0.15",
+            "TicksPerStoneSpawn": "15",
+            "GridXSize": "16",
+            "GridYSize": "16"
+        }
+    ]
 }
 ```
 

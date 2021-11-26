@@ -19,9 +19,9 @@ So what I decided to do was to make an object that meets these requirements:
 
 The solution which I created is a single StatContainer object that consists internally or three parts.
 
-- `StatContainer<T>` The object itself that is a generic that only accepts enums. The enum is how the stats are defined.
-- `StatValue` This object is what handles the value of the stats. This contains the base value, current value and importantly the mechanism for listening to value changes. These are then stored in a dictionary with the key being the enum of the stat.
-- `StatusEffects<T>` This handles the status effects and is initiallized with the same enum that's used to create the StatContainer.
+-   `StatContainer<T>` The object itself that is a generic that only accepts enums. The enum is how the stats are defined.
+-   `StatValue` This object is what handles the value of the stats. This contains the base value, current value and importantly the mechanism for listening to value changes. These are then stored in a dictionary with the key being the enum of the stat.
+-   `StatusEffects<T>` This handles the status effects and is initiallized with the same enum that's used to create the StatContainer.
 
 Lets look at some of the code.
 
