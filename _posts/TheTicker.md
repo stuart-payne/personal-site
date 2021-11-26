@@ -3,6 +3,7 @@ title: "The Ticker"
 date: 2021-10-29T15:33:34+01:00
 draft: false
 ---
+
 WebGL build of Snek can be found [here](https://play.unity.com/mg/other/snek-tgk7)  
 Full source code and downloadable Unity project available [here](https://github.com/stuart-payne/Snek)
 
@@ -20,7 +21,7 @@ public class Ticker : MonoBehaviour
 	private float m_TickRate;
 	private IEnumerator m_TickCoroutine;
 	private List<ITickable> m_Tickables;
-	
+
 	private void Awake()
 	{
 
@@ -28,7 +29,7 @@ public class Ticker : MonoBehaviour
 	}
 
 	public void SetTickRate(float tickRate) => m_TickRate = tickRate;
-	
+
 	public void StartTick()
 	{
 		m_TickCoroutine = Tick(m_TickRate);
@@ -57,9 +58,9 @@ public class Ticker : MonoBehaviour
 }
 ```
 
-The ``TIck`` method is the main part of this class. Returning an ``IEnumerator`` this is a coroutine that infinitely loop with each iteration waiting for a specified amount of time whish is a parameter of the method. All it then does is iterate through the container ``m_Tickables`` and calls the ``TIck`` method on these objects.
+The `TIck` method is the main part of this class. Returning an `IEnumerator` this is a coroutine that infinitely loop with each iteration waiting for a specified amount of time whish is a parameter of the method. All it then does is iterate through the container `m_Tickables` and calls the `TIck` method on these objects.
 
-``m_Tickables``  is a list of type ``List<ITickable>``. ``ITickable``, as the name suggests, is an interface with the following code:
+`m_Tickables` is a list of type `List<ITickable>`. `ITickable`, as the name suggests, is an interface with the following code:
 
 ```csharp
 public interface ITickable
@@ -68,7 +69,7 @@ public interface ITickable
 }
 ```
 
-This allows me to give my TIcker any object that implements the ``ITickable`` interface and then the object can define it's own behaviour on each tick. An example in the game is the GameManager class implements the ITickable interface and while is is responsible for setting up the Ticker, it also registers itself to be ticked so that it can drive other behaviour in the game which it has to manager.
+This allows me to give my TIcker any object that implements the `ITickable` interface and then the object can define it's own behaviour on each tick. An example in the game is the GameManager class implements the ITickable interface and while is is responsible for setting up the Ticker, it also registers itself to be ticked so that it can drive other behaviour in the game which it has to manager.
 
 ```csharp
 public class GameManager : MonoBehaviour, ITickable
@@ -121,6 +122,6 @@ private Ticker SetupTicker(float tickRate)
 }
 ```
 
-This tests my ability to Add and Remove ITickable objects from the Ticker and ensure that it still ticks what it's meant to and stops ticking the item removed. The testing of this behaviour is made easy as I can implement the class TestTickable as an ITickable and use the TIckCount it has to verify whether the Tick method has been called or not. 
+This tests my ability to Add and Remove ITickable objects from the Ticker and ensure that it still ticks what it's meant to and stops ticking the item removed. The testing of this behaviour is made easy as I can implement the class TestTickable as an ITickable and use the TIckCount it has to verify whether the Tick method has been called or not.
 
 In conclusion, this object allows me to control the speed of the game through one place, easily unit test, removes the need to use Update in any of my monobehaviours and even give me the abilty to pause, restart or even change the speed of the game during runtime for free. A success!

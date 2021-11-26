@@ -14,7 +14,7 @@ Breadth fill that exits on first path found:
 
 ![Image](/BreadthFill.gif)
 
-A*:
+A\*:
 
 ![AStar](/AStar.gif)
 
@@ -24,15 +24,15 @@ Creating obstacle for the pathfinder to navigate around:
 
 As this code works on grids, I had the idea to implement the pathfinding in my Snek game and allow the option to replace the user input with an AI input that finds a path from the snake's head to the apple. After a small amount of pain making sure the path evaluation and walking along the returned path was syncronised with the snake movement and also dealing with the fact that the grid wraps (effectively making it a donut) I got it to work! [You can play the result here.](https://play.unity.com/mg/other/snek-tgk7).
 
-Here is a gif of it in action: 
+Here is a gif of it in action:
 
 ![Snek](/Snek.gif)
 
 It's works fairly well but is far from perfect. There are situations where the snake will wrap around itself and cause there to be no available path where it is programmed to fallback to moving in a straight direction, eventually losing. A human player would know to try to create space by moving the snake around until there is a path to the apple but getting the game to be able to do that will require much more than simple pathfinding.
 
-
 Regardless of the imperfections, I'm happy with the results and honestly, it's almost therapeutic watching the game play itself. Thank you for reading.
 
 Full code of both projects are here:
+
 - [Snek](https://github.com/stuart-payne/Snek)
 - [Pathfinding](https://github.com/stuart-payne/Pathfinding)
