@@ -1,7 +1,9 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { Box, Text } from "@chakra-ui/react";
-import { getPostNames, getPostNamesWithoutExt } from "../../lib/helpers";
+import { Heading, VStack } from "@chakra-ui/react";
+import { getPostContent, getPostNamesWithoutExt } from "../../lib/helpers";
 import { ParsedUrlQuery } from "querystring";
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
+import ReactMarkdown from "react-markdown";
 
 interface PostsParams extends ParsedUrlQuery {
     slug: string;
@@ -9,23 +11,28 @@ interface PostsParams extends ParsedUrlQuery {
 
 interface PostProps {
     name: string;
+    content: string;
 }
 
-const Post: NextPage<PostProps> = ({ name }) => {
+const Post: NextPage<PostProps> = ({ name, content }) => {
     return (
-        <Box>
-            <Text>{name}</Text>
-        </Box>
+        <VStack mt="6rem" spacing="2rem" mb="4rem" align="start">
+            <Heading>{name}</Heading>
+            <ReactMarkdown components={ChakraUIRenderer()}>
+                {content}
+            </ReactMarkdown>
+        </VStack>
     );
 };
 
 export const getStaticProps: GetStaticProps<PostProps, PostsParams> = async (
     context
 ) => {
-    const params = context?.params as PostsParams;
+    const { slug } = context?.params as PostsParams;
     return {
         props: {
-            name: params.slug,
+            name: slug,
+            content: await getPostContent(`${slug}.md`),
         },
     };
 };

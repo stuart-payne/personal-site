@@ -3,6 +3,7 @@ import { join } from "path";
 import matter from "gray-matter";
 import type { GrayMatterFile } from "gray-matter";
 import { PostMetaData } from "../pages";
+import { micromark } from "micromark";
 
 const POSTS_PATH = "_posts";
 const mdExtRemover = /(.md$)/;
@@ -45,4 +46,9 @@ export const getAllPostMetaData = async (): Promise<PostMetaData[]> => {
 export const formatDateGood = (date: Date): string => {
     const dateString = date.toDateString();
     return dateString.split(" ").slice(1, 3).join(" ");
+};
+
+export const getPostContent = async (postFileName: string): Promise<string> => {
+    const file = await readFile(join(POSTS_PATH, postFileName), "utf8");
+    return matter(file).content;
 };

@@ -17,11 +17,11 @@ export interface PostMetaData {
 const Home: NextPage<IndexProps> = ({ posts }) => {
     return (
         <Center h="100%">
-            <VStack spacing="18px">
-                <Heading mb="8px" as="h1" size="2xl">
+            <VStack spacing="1rem">
+                <Heading mb="0.5rem" as="h1" size="2xl">
                     Stuart Payne
                 </Heading>
-                <HStack spacing="24px">
+                <HStack spacing="1.5rem">
                     <LinkIcon
                         url="mailto:paynestu@gmail.com"
                         icon={FaEnvelope}
@@ -39,10 +39,10 @@ const Home: NextPage<IndexProps> = ({ posts }) => {
                     DevBlog
                 </Heading>
                 <VStack>
-                    <Heading size="md" mt="16px" mb="8px">
+                    <Heading size="md" mt="1rem" mb="0.5rem">
                         Recent Posts
                     </Heading>
-                    <VStack spacing="2px">
+                    <VStack spacing="-4px">
                         {posts.slice(0, 5).map(({ title, date, link }) => (
                             <PostLink
                                 key={title}
