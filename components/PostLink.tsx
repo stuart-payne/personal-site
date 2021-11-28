@@ -1,5 +1,5 @@
 import type { PostMetaData } from "../pages";
-import { Flex, LinkBox, LinkOverlay, Heading, Text } from "@chakra-ui/react";
+import { Flex, LinkBox, Link, Heading, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
 
@@ -9,9 +9,11 @@ export const PostLink = ({ title, date, link }: PostMetaData) => {
         <MotionLinkBox minH="2.5rem" w="320px" whileHover={{ scale: 1.1 }}>
             <Flex justify="space-between" align="center">
                 <Heading letterSpacing="wider" size="sm" isTruncated>
-                    <LinkOverlay href={link} as={NextLink}>
-                        {title}
-                    </LinkOverlay>
+                    <NextLink href={link} passHref>
+						<Link>
+							{title}
+						</Link>
+                    </NextLink>
                 </Heading>
                 <Text fontWeight="semibold" fontSize="md">
                     {date}

@@ -8,10 +8,9 @@ import {
     Text,
     HStack,
     useColorModeValue,
-    Link,
 } from "@chakra-ui/react";
 import React from "react";
-import NextLink from "next/link";
+import Link from "next/link";
 import ColorModeButton from "./ColorModeButton";
 
 const Navbar = () => {
@@ -26,12 +25,12 @@ const Navbar = () => {
             <Container h="100%" maxW="container.md">
                 <Flex h="100%" justify="space-between" align="center">
                     <Heading as="h3" size="md">
-                        <LinkOverlay href="/" as={NextLink}>
+                        <LinkOverlay href="/" as={Link}>
                             &gt; $ cd /home/
                         </LinkOverlay>
                     </Heading>
                     <HStack spacing={8}>
-                        <LinkOverlay href="/about" as={NextLink}>
+                        <LinkOverlay href="/about" as={Link}>
                             About
                         </LinkOverlay>
                         <ColorModeButton />

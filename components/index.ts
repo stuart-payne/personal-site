@@ -3,3 +3,4 @@ export * from "./Layout";
 export * from "./LinkIcon";
 export * from "./Navbar";
 export * from "./PostLink";
+export * from "./AnimatePage";
